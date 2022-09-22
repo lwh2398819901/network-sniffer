@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.0)
+project(basestruct)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# 获取目录下所有的文件
+file(GLOB BASESTRUCT_SOURCES "*.cpp")
+file(GLOB BASESTRUCT_HEADERS "*.h")
+# 获取源文件
+set(BASESTRUCT_SRCS ${BASESTRUCT_SOURCES} ${BASESTRUCT_HEADERS})
+
+# 生成静态库
+add_library("${PROJECT_NAME}" STATIC ${BASESTRUCT_SRCS})
+
+# 安装静态库
+set(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "Install path prefix" FORCE)
+install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})
+install(FILES ${BASESTRUCT_HEADERS}  DESTINATION include/${PROJECT_NAME})

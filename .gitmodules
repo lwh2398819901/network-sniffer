@@ -1,0 +1,3 @@
+[submodule "3rdpart/PublisherCode"]
+	path = 3rdpart/PublisherCode
+	url = git@github.com:lwh2398819901/PublisherCode.git

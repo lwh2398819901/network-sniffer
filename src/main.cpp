@@ -3,9 +3,7 @@
 #include "pubclass.h"
 #include "pubfunc.h"
 #include <getopt.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <list>
+
 using namespace std;
 using namespace publisherClass;
 using namespace publisherFunc;
@@ -22,8 +20,8 @@ void printHelp()
     printf(" -i, --input        从抓包文件中读取数据\n");
     printf(" -o, --output       保存抓包文件\n");
     printf(" -p, --port         监控主机端口列表\n");
-    printf(" -r, --reload       重新加载配置文件\n");
-    printf(" -R, --restart      重新启动服务\n");
+    //printf(" -r, --reload       重新加载配置文件\n");  //暂不实现重启等功能 需要进程通信机制
+    //printf(" -R, --restart      重新启动服务\n");
     printf(" -v, --version      软件版本\n");
 }
 
@@ -39,8 +37,8 @@ int main(int argc, char *argv[])
         {"input", required_argument, nullptr, 'i'},
         {"output", required_argument, nullptr, 'o'},
         {"port", required_argument, nullptr, 'p'},
-        {"reload", no_argument, nullptr, 'r'},
-        {"restart", no_argument, nullptr, 'R'},
+        //{"reload", no_argument, nullptr, 'r'},
+        //{"restart", no_argument, nullptr, 'R'},
         {"version", no_argument, nullptr, 'v'}
     };
 
@@ -51,7 +49,7 @@ int main(int argc, char *argv[])
     list<string> ports;
     string inputPath;
     string outputPath;
-    Configrue*con =  ConfigrueFactory::getInstance("test");
+    ConfigrueInI ini("test.ini");
 
     Log l;
     while ((c = getopt_long(argc, argv, optString, long_opts, &long_index)) != -1) {
@@ -91,13 +89,13 @@ int main(int argc, char *argv[])
             str += "p";
             ports.push_back(optarg);
             break;
-        case 'r':
-            str += "r";
-            break;
+//        case 'r':
+//            str += "r";
+//            break;
 
-        case 'R':
-            str += "R";
-            break;
+//        case 'R':
+//            str += "R";
+//            break;
         case 'v':
             str += "v";
             break;

@@ -1,5 +1,10 @@
+# 库主版本号
+set (VERSION_MAJOR 0)
+# 库副版本号
+set (VERSION_MINOR 1)
+
 cmake_minimum_required(VERSION 3.0)
-project(network-sniffer VERSION 0.1)
+project(network-sniffer VERSION ${VERSION_MAJOR}.${VERSION_MINOR})
 
 
 option(DOTEST "option for test" OFF)

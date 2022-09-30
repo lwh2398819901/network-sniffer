@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 3.0)
-project(network-sniffer VERSION 0.1)
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,8 +13,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../3rdpart/publicCode/src)
 # include_directories(kafka)
 target_link_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/lib) # 搜索库位置
 #:TODO 此处需要修改引入第三方项目方式 待修改
-target_link_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/../3rdpart/publicCode/lib)
+target_link_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/3rdpart/publicCode/lib)
 message(STATUS "PROJECT_BINARY_DIR" ${PROJECT_BINARY_DIR})
+
 
 set(LINK_LISTS basestruct
                publicCode

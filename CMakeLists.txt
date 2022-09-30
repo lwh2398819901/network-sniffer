@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
-project(network-sniffer)
+project(network-sniffer VERSION 0.1)
+
 
 option(DOTEST "option for test" OFF)
 # 是否开启单元测试编译
-set(DOTEST ON)
+set(DOTEST OFF)
 
 #compile flags
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -38,6 +39,19 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 #设置可执行程序路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+
+file(REMOVE ${PROJECT_SOURCE_DIR}/src/config.h)
+# 主版本号
+set (VERSION_MAJOR 0)
+# 副版本号
+set (VERSION_MINOR 1)
+
+
+# 加入一个配置头文件，用于处理 CMake 对源码的设置
+configure_file (
+  "${PROJECT_SOURCE_DIR}/config.h.in"
+  "${PROJECT_SOURCE_DIR}/src/config.h"
+  )
 
 add_subdirectory(basestruct)
 add_subdirectory(3rdpart)
